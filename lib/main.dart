@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:millionaire/style.dart';
 
 import 'pages/homePage.dart';
 
