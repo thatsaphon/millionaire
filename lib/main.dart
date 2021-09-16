@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:millionaire/style.dart';
 
 import 'pages/homePage.dart';
 
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // primaryColor: Color(0x7A65FD),
+        // accentColor: Color(0xB392FA),
       ),
       home: HomePage(),
     );
