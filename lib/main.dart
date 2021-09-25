@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:millionaire/style.dart';
+import 'package:millionaire/models/inventories.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/homePage.dart';
+import 'pages/searchLottoPage.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => SearchedInventories(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +25,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        // primaryColor: Color(0x7A65FD),
-        // accentColor: Color(0xB392FA),
-      ),
-      home: HomePage(),
+          primarySwatch: Colors.purple,
+          scaffoldBackgroundColor: Colors.purple[50]),
+      home: SearchLottoPage(),
     );
   }
 }
