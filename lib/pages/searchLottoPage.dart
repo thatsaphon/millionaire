@@ -64,7 +64,13 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
                   value: searchType,
                   icon: Icon(Icons.arrow_drop_down),
                   isExpanded: true,
-                  items: ["เลขท้าย 2 ตัว", "เลขท้าย 3 ตัว", "ทั้งชุด"]
+                  items: [
+                    "เลขท้าย 2 ตัว",
+                    "เลขท้าย 3 ตัว",
+                    "เลขหน้า 2 ตัว",
+                    "เลขหน้า 3 ตัว",
+                    "ทั้งชุด"
+                  ]
                       .map((value) => DropdownMenuItem(
                             child: Text(value),
                             value: value,
@@ -80,10 +86,14 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
               padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: TextFormField(
                 validator: (value) {
-                  if (searchType == "เลขท้าย 2 ตัว" && value!.length != 2) {
+                  if (searchType == "เลขหน้า 2 ตัว" &&
+                      searchType == "เลขท้าย 2 ตัว" &&
+                      value!.length != 2) {
                     return "ต้องใส่ให้ครบ 2 หลัก";
                   }
-                  if (searchType == "เลขท้าย 3 ตัว" && value!.length != 3) {
+                  if (searchType == "เลขหน้า 3 ตัว" &&
+                      searchType == "เลขท้าย 3 ตัว" &&
+                      value!.length != 3) {
                     return "ต้องใส่ให้ครบ 3 หลัก";
                   }
                   if (searchType == "ทั้งชุด" && value!.length != 6) {
@@ -97,21 +107,28 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
                     return "ทุกๆตำแหน่งต้องเป็นตัวเลข";
                   }
                   if (searchType != "เลขท้าย 2 ตัว" &&
+                      searchType != "เลขหน้า 2 ตัว" &&
                       int.tryParse(value.substring(2, 3)) == null) {
                     return "ทุกๆตำแหน่งต้องเป็นตัวเลข";
                   }
                   if (searchType != "เลขท้าย 2 ตัว" &&
                       searchType != "เลขท้าย 3 ตัว" &&
+                      searchType != "เลขหน้า 2 ตัว" &&
+                      searchType != "เลขหน้า 3 ตัว" &&
                       int.tryParse(value.substring(3, 4)) == null) {
                     return "ทุกๆตำแหน่งต้องเป็นตัวเลข";
                   }
                   if (searchType != "เลขท้าย 2 ตัว" &&
                       searchType != "เลขท้าย 3 ตัว" &&
+                      searchType != "เลขหน้า 2 ตัว" &&
+                      searchType != "เลขหน้า 3 ตัว" &&
                       int.tryParse(value.substring(4, 5)) == null) {
                     return "ทุกๆตำแหน่งต้องเป็นตัวเลข";
                   }
                   if (searchType != "เลขท้าย 2 ตัว" &&
                       searchType != "เลขท้าย 3 ตัว" &&
+                      searchType != "เลขหน้า 2 ตัว" &&
+                      searchType != "เลขหน้า 3 ตัว" &&
                       int.tryParse(value.substring(5)) == null) {
                     return "ทุกๆตำแหน่งต้องเป็นตัวเลข";
                   }
@@ -142,11 +159,19 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
                       searchedItems.addAll(inventories.where((inventory) =>
                           inventory.number.substring(3, 6) == searchBox));
                     }
+                    if (searchType == "เลขหน้า 2 ตัว") {
+                      searchedItems.addAll(inventories.where((inventory) =>
+                          inventory.number.substring(0, 2) == searchBox));
+                    }
+                    if (searchType == "เลขหน้า 3 ตัว") {
+                      searchedItems.addAll(inventories.where((inventory) =>
+                          inventory.number.substring(0, 3) == searchBox));
+                    }
                     if (searchType == "ทั้งชุด") {
                       searchedItems.addAll(inventories.where((inventory) =>
                           inventory.number.substring(0, 6) == searchBox));
                     }
-                    context.read<SearchedInventories>().searchedInventories =
+                    context.read<Inventories>().searchedInventories =
                         searchedItems;
                     Navigator.push(
                         context,

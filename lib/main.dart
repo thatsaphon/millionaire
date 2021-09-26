@@ -10,7 +10,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => SearchedInventories(),
+          create: (context) => Inventories(),
         ),
       ],
       child: MyApp(),
