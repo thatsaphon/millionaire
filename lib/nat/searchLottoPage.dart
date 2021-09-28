@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:millionaire/models/inventories.dart';
 import 'package:provider/provider.dart';
 
+import '../main.dart';
 import 'searchedNumberPage.dart';
 
 class SearchLottoPage extends StatefulWidget {
@@ -14,17 +15,17 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
   final _formKey = GlobalKey<FormState>();
   final items = ['item1', 'item2'];
   final List<Inventory> inventories = [
-    Inventory(number: "949695", quantity: 5),
-    Inventory(number: "086165", quantity: 3),
-    Inventory(number: "236331", quantity: 8),
-    Inventory(number: "236011", quantity: 7),
-    Inventory(number: "365343", quantity: 6),
-    Inventory(number: "805238", quantity: 2),
-    Inventory(number: "320015", quantity: 9),
-    Inventory(number: "920521", quantity: 7),
-    Inventory(number: "243595", quantity: 5),
-    Inventory(number: "056678", quantity: 4),
-    Inventory(number: "193178", quantity: 6),
+    Inventory("949695", 5),
+    Inventory("086165", 3),
+    Inventory("236331", 8),
+    Inventory("236011", 7),
+    Inventory("365343", 6),
+    Inventory("805238", 2),
+    Inventory("320015", 9),
+    Inventory("920521", 7),
+    Inventory("243595", 5),
+    Inventory("056678", 4),
+    Inventory("193178", 6),
   ];
   String? searchBox;
   String? searchType = "เลขท้าย 2 ตัว";
@@ -184,31 +185,7 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'หน้าหลัก',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-            label: 'คำสั่งซื้อ',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.money),
-            label: 'ตรวจรางวัล',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'การแจ้งเตือน',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'บัญชีของฉัน',
-          ),
-        ],
-      ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

@@ -11,10 +11,9 @@ class SearchedNumberPage extends StatefulWidget {
 class _SearchedNumberPageState extends State<SearchedNumberPage> {
   List<int> addToCartNumbers = [];
   List<int> bgColor = [50, 100];
-
+  List<int> cartItemQuantity = [];
   @override
   Widget build(BuildContext context) {
-    print(addToCartNumbers.length);
     return Scaffold(
         appBar: AppBar(
           title: Text('ค้นหาเลข'),
@@ -27,31 +26,31 @@ class _SearchedNumberPageState extends State<SearchedNumberPage> {
                 addToCartNumbers = List.generate(
                     items.searchedInventories.length, (index) => 0);
               }
-              List<int> cartItemQuantity =
+              cartItemQuantity =
                   List<int>.generate(addToCartNumbers.length, (index) {
                 if (context.read<Inventories>().cart == null) {
                   return 0;
                 }
-                return 0;
-                for (var i = 0;
-                    i < context.read<Inventories>().cart.cartItems.length;
-                    i++) {
+                for (index;
+                    index <
+                        context.read<Inventories>().searchedInventories.length;
+                    index++) {
                   for (var j = 0;
-                      j <
-                          context
-                              .read<Inventories>()
-                              .searchedInventories
-                              .length;
+                      j < context.read<Inventories>().cart.cartItems.length;
                       j++) {
-                    if (context.read<Inventories>().cart.cartItems[i].number ==
-                        context.read<Inventories>().searchedInventories[j]) {
+                    if (context.read<Inventories>().cart.cartItems[j].number ==
+                        context
+                            .read<Inventories>()
+                            .searchedInventories[index]
+                            .number) {
                       return context
                           .read<Inventories>()
                           .cart
-                          .cartItems[i]
+                          .cartItems[j]
                           .quantity;
                     }
                   }
+                  return 0;
                 }
                 return 0;
               });
@@ -77,7 +76,7 @@ class _SearchedNumberPageState extends State<SearchedNumberPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "จำนวนในตะกร้า 0",
+                                "จำนวนในตะกร้า ${cartItemQuantity[index]}",
                                 style: TextStyle(color: Colors.grey[800]),
                               ),
                               Row(
@@ -151,6 +150,7 @@ class _SearchedNumberPageState extends State<SearchedNumberPage> {
                                         .cart
                                         .cartItems[i]
                                         .quantity = addToCartNumbers[index];
+                                    setState(() {});
                                     break;
                                   }
                                   if (addToCartNumbers[index] > 0 &&
@@ -158,42 +158,30 @@ class _SearchedNumberPageState extends State<SearchedNumberPage> {
                                           context
                                                   .read<Inventories>()
                                                   .cart
+                                                  .cartItems
                                                   .length -
                                               1) {
                                     context
                                         .read<Inventories>()
                                         .cart
                                         .cartItems
-                                        .addAll(Inventory(
-                                            number: items
-                                                .searchedInventories[index]
+                                        .add(Inventory(
+                                            items.searchedInventories[index]
                                                 .number,
-                                            quantity: addToCartNumbers[index]));
+                                            addToCartNumbers[i]));
                                   }
                                 }
+                                setState(() {});
                               }
                               if (context.read<Inventories>().cart == null) {
                                 context.read<Inventories>().cart = new Cart(
-                                    user: "test",
-                                    cartItems: <Inventory>[
-                                      Inventory(
-                                          number: items
-                                              .searchedInventories[index]
-                                              .number,
-                                          quantity: addToCartNumbers[index])
-                                    ]);
+                                    "test", <Inventory>[
+                                  Inventory(
+                                      items.searchedInventories[index].number,
+                                      addToCartNumbers[index])
+                                ]);
+                                setState(() {});
                               }
-                              print(context.read<Inventories>().cart.user);
-                              print(context
-                                  .read<Inventories>()
-                                  .cart
-                                  .cartItems[0]
-                                  .number);
-                              print(context
-                                  .read<Inventories>()
-                                  .cart
-                                  .cartItems[0]
-                                  .quantity);
                             },
                             child: Icon(
                               Icons.shopping_cart,
