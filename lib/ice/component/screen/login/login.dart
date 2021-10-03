@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:millionaire/ice/component/background.dart';
 import 'package:millionaire/ice/component/screen/register/register.dart';
-// import 'package:team_apps/components/background.dart';
-// import 'package:team_apps/components/screens/register/register.dart';
+// import 'package:millionaires/components/background.dart';
+// import 'package:millionaires/components/screens/register/register.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

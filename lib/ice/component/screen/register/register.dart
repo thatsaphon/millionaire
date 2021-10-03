@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:millionaire/ice/component/background.dart';
 import 'package:millionaire/ice/component/screen/account/account.dart';
 import 'package:millionaire/ice/component/screen/login/login.dart';
-// import 'package:team_apps/components/background.dart';
-// import 'package:team_apps/components/screens/account/account.dart';
-// import 'package:team_apps/screens/login/login.dart';
+// import 'package:millionaires/components/background.dart';
+// import 'package:millionaires/components/screens/account/account.dart';
+// import 'package:millionaires/screens/login/login.dart';
 
 class RegisterScreen extends StatelessWidget {
   @override
