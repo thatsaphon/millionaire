@@ -17,7 +17,6 @@ import 'package:millionaire/models/usernameForm.dart';
 import 'package:millionaire/nat/searchLottoPage.dart';
 import 'package:provider/provider.dart';
 
-import 'ing/noti.dart';
 import 'ing/notiListView.dart';
 import 'kaew/account.dart';
 import 'kaew/history.dart';

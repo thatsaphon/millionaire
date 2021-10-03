@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:millionaire/ice/component/background.dart';
 import 'package:millionaire/ice/component/screen/account/account.dart';
+import 'package:millionaire/models/bottomBarIndex.dart';
+import 'package:provider/provider.dart';
 import 'package:millionaire/ice/component/screen/login/login.dart';
 // import 'package:millionaires/components/background.dart';
 // import 'package:millionaires/components/screens/account/account.dart';
@@ -85,12 +87,8 @@ class RegisterScreen extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               child: RaisedButton(
                 onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileScreen(),
-                    ),
-                  ),
+                  context.read<BottomBarIndex>().bottomBarIndex = 4,
+                  Navigator.pushNamed(context, "/profile"),
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(80.0),
@@ -150,4 +148,4 @@ class RegisterScreen extends StatelessWidget {
   }
 }
 
-push(BuildContext context, MaterialPageRoute materialPageRoute) {}
+// push(BuildContext context, MaterialPageRoute materialPageRoute) {}

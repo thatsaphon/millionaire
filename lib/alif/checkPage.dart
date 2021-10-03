@@ -29,6 +29,7 @@ class _CheckPageState extends State<CheckPage> {
     return Scaffold(
         backgroundColor: Colors.purple[50],
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Center(
               child: Text(
             'ตรวจหวยจ้า',

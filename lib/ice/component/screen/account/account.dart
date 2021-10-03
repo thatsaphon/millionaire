@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:millionaire/ice/component/background.dart';
+import 'package:millionaire/main.dart';
 // import 'package:millionaires/components/background.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -102,31 +103,7 @@ class ProfileScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.purple[50],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'หน้าหลัก',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.card_travel),
-            label: 'คำสั่งซื้อ',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.money),
-            label: 'ตรวจรางวัล',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'การแจ้งเตือน',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'บัญชีของฉัน',
-          ),
-        ],
-      ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }

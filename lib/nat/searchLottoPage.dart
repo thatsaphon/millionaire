@@ -23,6 +23,7 @@ class _SearchLottoPageState extends State<SearchLottoPage> {
     final List<Inventory> inventories = context.read<Inventories>().inventories;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('ค้นหาเลข'),
         actions: <Widget>[
           IconButton(

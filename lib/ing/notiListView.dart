@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:millionaire/main.dart';
 
 class Item {
   String noti;
@@ -33,6 +34,7 @@ class _ListviewtestState extends State<Listviewtest> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             'การแจ้งเตือน',
             style: TextStyle(fontSize: 28),
@@ -52,6 +54,9 @@ class _ListviewtestState extends State<Listviewtest> {
               tileColor: Colors.deepPurple[50],
             );
           },
-        ));
+        ),
+        bottomNavigationBar: BottomBar(),
+        )
+        ;
   }
 }
